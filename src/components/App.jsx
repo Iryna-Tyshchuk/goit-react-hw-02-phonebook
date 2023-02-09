@@ -1,20 +1,36 @@
 import { Component } from 'react';
+import ContactForm from './ContactForm.jsx/ContactForm';
+import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 
 export default class App extends Component {
   state = {
-    contacts: [],
-    name: '',
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+    // name: '',
+    // number: '',
   };
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
+  addContact = data => {
+    const newContact = {
+      ...data,
+      id: nanoid(),
+    };
+
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newContact],
+    }));
   };
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log(this.state.name);
-    // this.props.addUser({ ...this.state });
-    this.setState({ name: '' });
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(({ id }) => id !== contactId),
+    }));
   };
 
   render() {
@@ -29,20 +45,17 @@ export default class App extends Component {
           color: '#010101',
         }}
       >
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-              onChange={this.handleChange}
-            />
-          </label>
-          <button type="submit">Save</button>
-        </form>
+        <div>
+          <h1>Phone book</h1>
+          <ContactForm addContact={this.addContact} />
+
+          <h2>Contacts</h2>
+          <Filter />
+          <ContactList
+            contacts={this.state.contacts}
+            deleteContact={this.deleteContact}
+          />
+        </div>
       </div>
     );
   }
