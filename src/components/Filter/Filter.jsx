@@ -1,8 +1,13 @@
-export const Filter = () => {
+export const Filter = ({ value, onFilterChange }) => {
   return (
-    <>
-      <span> Find contact by name</span>
-      <input />
-    </>
+    <div style={{ margin: '20px auto', width: '500px' }}>
+      <p>Find contact by name</p>
+      <input
+        type="text"
+        name="filter"
+        value={value}
+        onChange={onFilterChange}
+      />
+    </div>
   );
 };
