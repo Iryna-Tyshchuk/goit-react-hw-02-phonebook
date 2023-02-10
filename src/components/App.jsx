@@ -2,7 +2,7 @@ import { Component } from 'react';
 import ContactForm from './ContactForm.jsx/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-
+import { GlobalStyle } from '../GlobalStyle';
 import { nanoid } from 'nanoid';
 
 export default class App extends Component {
@@ -56,16 +56,17 @@ export default class App extends Component {
         }}
       >
         <div>
-          <h3>Phone book</h3>
+          <h1 style={{ fontSize: '32px' }}>Phone book</h1>
           <ContactForm addContact={this.addContact} />
 
-          <h4>Contacts</h4>
+          <h2 style={{ fontSize: '32px' }}>Contacts</h2>
           <Filter onFilterChange={this.handleFilter} value={filter} />
           <ContactList
             contacts={filteredContacts}
             deleteContact={this.deleteContact}
           />
         </div>
+        <GlobalStyle />
       </div>
     );
   }

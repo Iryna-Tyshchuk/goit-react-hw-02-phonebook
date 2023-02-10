@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { Button } from 'components/Button/Button';
+import { Input } from '../Input/Input';
 export default class ContactForm extends Component {
   state = {
     name: '',
@@ -18,8 +20,8 @@ export default class ContactForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name
-          <input
+          <p style={{ fontSize: '32px' }}>Name:</p>
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -30,8 +32,8 @@ export default class ContactForm extends Component {
           />
         </label>
         <label>
-          Number
-          <input
+          <p style={{ fontSize: '32px' }}>Number:</p>
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -41,7 +43,7 @@ export default class ContactForm extends Component {
             value={number}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <Button type="submit">Add contact</Button>
       </form>
     );
   }

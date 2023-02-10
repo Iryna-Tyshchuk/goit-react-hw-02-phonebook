@@ -1,8 +1,9 @@
+import { Input } from '../Input/Input';
 export const Filter = ({ value, onFilterChange }) => {
   return (
     <div style={{ margin: '20px auto', width: '500px' }}>
-      <p>Find contact by name</p>
-      <input
+      <p style={{ fontSize: '32px' }}>Find contact by name</p>
+      <Input
         type="text"
         name="filter"
         value={value}

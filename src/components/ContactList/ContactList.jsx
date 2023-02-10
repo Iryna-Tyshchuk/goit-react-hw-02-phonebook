@@ -1,12 +1,15 @@
+import { ContactItem } from '../ContactItem/ContactItem';
 export const ContactList = ({ contacts, deleteContact }) => {
   return (
     <ul>
       {contacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name}
-          {contact.number}
-          <button onClick={() => deleteContact(contact.id)}>Delete</button>
-        </li>
+        <ContactItem
+          key={contact.id}
+          name={contact.name}
+          number={contact.number}
+          id={contact.id}
+          deleteContact={deleteContact}
+        />
       ))}
     </ul>
   );
