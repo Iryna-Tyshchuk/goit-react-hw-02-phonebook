@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Button } from 'components/Button/Button';
 export const ContactItem = ({ name, number, id, deleteContact }) => {
   return (
@@ -9,4 +10,10 @@ export const ContactItem = ({ name, number, id, deleteContact }) => {
       </li>
     </>
   );
+};
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  deleteContact: PropTypes.func.isRequired,
 };

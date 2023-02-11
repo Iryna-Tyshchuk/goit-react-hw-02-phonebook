@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { Button } from 'components/Button/Button';
 import { Input } from '../Input/Input';
@@ -48,3 +49,7 @@ export default class ContactForm extends Component {
     );
   }
 }
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};
+//чи треба тут цей проп?

@@ -1,9 +1,9 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm.jsx/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { GlobalStyle } from '../GlobalStyle';
-import { nanoid } from 'nanoid';
 
 export default class App extends Component {
   state = {
@@ -71,3 +71,4 @@ export default class App extends Component {
     );
   }
 }
+// чи правильо тут підключені глобальні стилі?
